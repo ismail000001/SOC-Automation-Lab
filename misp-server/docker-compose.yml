@@ -1,0 +1,42 @@
+services:
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      - MYSQL_USER=misp
+      - MYSQL_PASSWORD=<YOUR_PASSWORD>
+      - MYSQL_ROOT_PASSWORD=<YOUR_PASSWORD>
+      - MYSQL_DATABASE=misp
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:5.0.6
+    restart: always
+    volumes:
+      - redis_data:/data
+
+  misp:
+    image: coolacid/misp-docker:core-latest
+    depends_on:
+      - redis
+      - db
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - BASEURL=https://192.168.138.147
+      - REDIS_FQDN=redis
+      - INIT=true
+      - MYSQL_HOST=db
+      - MYSQL_USER=misp
+      - MYSQL_PASSWORD=<YOUR_PASSWORD>
+      - MYSQL_DATABASE=misp
+      - CRON_USER_ID=33
+    volumes:
+      - misp_data:/var/www/MISP
+
+volumes:
+  mysql_data:
+  redis_data:
+  misp_data:

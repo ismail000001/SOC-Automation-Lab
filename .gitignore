@@ -1,0 +1,16 @@
+# Secrets / local overrides
+*.env
+.env.*
+**/secrets.yml
+**/*_debug.log
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Docker volumes / local state (if ever run next to the compose files)
+**/volumes/
+**/data/
