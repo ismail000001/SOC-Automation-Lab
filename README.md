@@ -2,7 +2,7 @@
 
 A self-hosted Security Operations Center built from scratch on a single machine (5 VMs), wiring together a SIEM, an Incident Response Platform, a Threat Intelligence platform, and a SOAR engine into one automated detection-to-response pipeline — **no manual step between an attack and an enriched, documented case.**
 
-> Final-year cybersecurity engineering project (PFE). Built solo, end to end: infrastructure, installation, integration, and automation.
+> Built solo, end to end: infrastructure, installation, integration, and automation.
 
 ---
 
